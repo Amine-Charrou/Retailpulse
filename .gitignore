@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# IDE
+.vscode/
+.idea/
+
+# Testing and linting
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+
+# Databricks
+.databricks/
+.databricks.env
+
+# Generated data
+data/raw/
+data/processed/
+data/generated/
+*.parquet
+*.csv
+*.jsonl
+
+# OS
+.DS_Store

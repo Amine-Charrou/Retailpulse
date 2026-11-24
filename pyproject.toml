@@ -1,0 +1,17 @@
+[project]
+name = "retailpulse"
+version = "0.1.0"
+description = "End-to-end retail data engineering platform"
+requires-python = ">=3.12,<3.13"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-v"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
