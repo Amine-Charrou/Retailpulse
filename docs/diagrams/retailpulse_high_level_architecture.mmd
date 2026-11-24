@@ -1,0 +1,51 @@
+
+flowchart TB
+    subgraph SOURCE["SOURCE LAYER"]
+        A["Synthetic Data Generator"]
+        B["Historical CSV / JSON"]
+        C["Incremental POS JSON Events"]
+        A --> B
+        A --> C
+    end
+
+    subgraph INGESTION["INGESTION LAYER"]
+        D["Batch Ingestion"]
+        E["Structured Streaming<br/>AvailableNow"]
+    end
+
+    subgraph LAKEHOUSE["DATABRICKS LAKEHOUSE"]
+        F["BRONZE<br/>Raw Delta Tables"]
+        G["SILVER<br/>Validated and Integrated"]
+        H["GOLD<br/>Facts and Dimensions"]
+        F --> G
+        G --> H
+    end
+
+    subgraph GOVERNANCE["QUALITY AND MONITORING"]
+        I["Data Quality"]
+        J["Quarantine"]
+        K["Pipeline Monitoring"]
+        I --> J
+        K
+    end
+
+    subgraph CONSUMPTION["ANALYTICS"]
+        L["Sales"]
+        M["Inventory"]
+        N["Suppliers"]
+        O["Customers"]
+    end
+
+    B --> D
+    C --> E
+    D --> F
+    E --> F
+    F --> I
+    G --> I
+    D --> K
+    E --> K
+    I --> K
+    H --> L
+    H --> M
+    H --> N
+    H --> O
