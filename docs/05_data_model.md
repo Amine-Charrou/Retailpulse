@@ -77,6 +77,8 @@ Sales quantities and monetary measures are positive. Return quantities and corre
 - `received_quantity`
 - `sold_quantity`
 - `returned_quantity`
+- `adjustment_quantity`
+- `minimum_available_stock`
 - `closing_stock`
 - `reserved_quantity`
 - `reorder_level`
@@ -143,6 +145,11 @@ The anonymous customer member uses `customer_key = 0`.
 - `city`
 - `region`
 - `store_type`
+- `is_active`
+- `effective_start_date`
+- `effective_end_date`
+- `is_current`
+- `record_hash`
 
 ### 5.4 dim_supplier
 
@@ -188,6 +195,7 @@ Initial implementation targets:
 
 - `dim_product`
 - `dim_customer`
+- `dim_store`
 - `dim_supplier`
 
 A changed tracked attribute creates a new dimension version with a new surrogate key. Previous versions remain available for historical reporting.
