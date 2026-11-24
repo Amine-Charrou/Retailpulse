@@ -1,0 +1,125 @@
+
+erDiagram
+    DIM_DATE ||--o{ FACT_SALES : "transaction date"
+    DIM_PRODUCT ||--o{ FACT_SALES : "product"
+    DIM_CUSTOMER ||--o{ FACT_SALES : "customer"
+    DIM_STORE ||--o{ FACT_SALES : "store"
+
+    DIM_DATE ||--o{ FACT_INVENTORY_SNAPSHOT : "snapshot date"
+    DIM_PRODUCT ||--o{ FACT_INVENTORY_SNAPSHOT : "product"
+    DIM_STORE ||--o{ FACT_INVENTORY_SNAPSHOT : "store"
+
+    DIM_SUPPLIER ||--o{ FACT_SUPPLIER_DELIVERY : "supplier"
+    DIM_PRODUCT ||--o{ FACT_SUPPLIER_DELIVERY : "product"
+    DIM_STORE ||--o{ FACT_SUPPLIER_DELIVERY : "store"
+
+    DIM_DATE ||--o{ FACT_SUPPLIER_DELIVERY : "order date"
+    DIM_DATE ||--o{ FACT_SUPPLIER_DELIVERY : "promised date"
+    DIM_DATE ||--o{ FACT_SUPPLIER_DELIVERY : "actual delivery date"
+
+    DIM_PRODUCT {
+        int product_key PK
+        string product_id
+        string product_name
+        string category
+        string brand
+        decimal unit_cost
+        decimal selling_price
+        date effective_start_date
+        date effective_end_date
+        boolean is_current
+    }
+
+    DIM_CUSTOMER {
+        int customer_key PK
+        string customer_id
+        string customer_segment
+        string city
+        string loyalty_status
+        date effective_start_date
+        date effective_end_date
+        boolean is_current
+    }
+
+    DIM_STORE {
+        int store_key PK
+        string store_id
+        string store_name
+        string city
+        string region
+        string store_type
+    }
+
+    DIM_SUPPLIER {
+        int supplier_key PK
+        string supplier_id
+        string supplier_name
+        string city
+        string supplier_category
+        date effective_start_date
+        date effective_end_date
+        boolean is_current
+    }
+
+    DIM_DATE {
+        int date_key PK
+        date calendar_date
+        int day
+        string day_name
+        int week
+        int month
+        int quarter
+        int year
+        boolean is_weekend
+        boolean is_holiday
+    }
+
+    FACT_SALES {
+        bigint sales_line_key PK
+        string transaction_id
+        string transaction_line_id
+        string transaction_type
+        string original_sale_line_id
+        int date_key FK
+        int product_key FK
+        int customer_key FK
+        int store_key FK
+        decimal quantity
+        decimal unit_price
+        decimal gross_amount
+        decimal discount_amount
+        decimal tax_amount
+        decimal net_sales_amount
+    }
+
+    FACT_INVENTORY_SNAPSHOT {
+        bigint snapshot_key PK
+        int date_key FK
+        int product_key FK
+        int store_key FK
+        decimal opening_stock
+        decimal received_quantity
+        decimal sold_quantity
+        decimal returned_quantity
+        decimal closing_stock
+        decimal reserved_quantity
+        decimal reorder_level
+        boolean stockout_flag
+    }
+
+    FACT_SUPPLIER_DELIVERY {
+        bigint delivery_key PK
+        string purchase_order_id
+        string purchase_order_line_id
+        int supplier_key FK
+        int product_key FK
+        int store_key FK
+        int order_date_key FK
+        int promised_date_key FK
+        int actual_delivery_date_key FK
+        decimal ordered_quantity
+        decimal received_quantity
+        decimal rejected_quantity
+        string delivery_status
+        boolean on_time_flag
+    }
