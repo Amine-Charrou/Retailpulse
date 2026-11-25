@@ -1,0 +1,25 @@
+[project]
+name = "RetailPulse"
+environment = "local"
+
+[data]
+root = "data"
+raw = "data/raw"
+processed = "data/processed"
+generated = "data/generated"
+
+[generator]
+seed = 42
+start_date = "2025-01-01"
+end_date = "2026-11-24"
+
+store_count = 15
+product_count = 500
+customer_count = 10000
+supplier_count = 50
+
+[databricks]
+catalog = "retailpulse"
+bronze_schema = "bronze"
+silver_schema = "silver"
+gold_schema = "gold"
