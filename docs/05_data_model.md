@@ -126,6 +126,10 @@ Partial deliveries are aggregated before loading this fact table. Ordered quanti
 - `unit_cost`
 - `selling_price`
 - `is_active`
+- `effective_start_date`
+- `effective_end_date`
+- `is_current`
+- `record_hash`
 
 ### 5.2 dim_customer
 
@@ -134,6 +138,10 @@ Partial deliveries are aggregated before loading this fact table. Ordered quanti
 - `customer_segment`
 - `city`
 - `loyalty_status`
+- `effective_start_date`
+- `effective_end_date`
+- `is_current`
+- `record_hash`
 
 The anonymous customer member uses `customer_key = 0`.
 
@@ -158,6 +166,11 @@ The anonymous customer member uses `customer_key = 0`.
 - `supplier_name`
 - `city`
 - `supplier_category`
+- `is_active`
+- `effective_start_date`
+- `effective_end_date`
+- `is_current`
+- `record_hash`
 
 ### 5.5 dim_date
 
